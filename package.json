@@ -1,0 +1,25 @@
+{
+  "name": "pagination-object",
+  "version": "0.1.0",
+  "description": "Generate a pagination object to be used on Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:renancouto/pagination-object.git"
+  },
+  "keywords": [
+    "pagination"
+  ],
+  "author": "Renan Couto",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/renancouto/pagination-object/issues"
+  },
+  "homepage": "https://github.com/renancouto/pagination-object",
+  "devDependencies": {
+    "mocha": "^2.2.1"
+  }
+}
