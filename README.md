@@ -1,5 +1,5 @@
 # pagination-object
-> Generate a pagination object to be used on Node.js, it doesn't return any type
+> Generate a pagination object to be used on Node.js. It doesn't return any type
 of markup, just an object
 
 ## Install
@@ -11,7 +11,7 @@ npm install --save pagination-object
 ```js
 var Pagination = require('pagination-object');
 var pagination = new Pagination({
-  currentPage  : 1,
+  currentPage  : 3,
   totalItems   : 54,
   itemsPerPage : 10
 });
