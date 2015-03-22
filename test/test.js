@@ -144,6 +144,16 @@ describe('Pagination Object Tests', function () {
 
   it('range end page should be 5', function () {
     var pagination = new Pagination({
+      currentPage  : 1,
+      totalItems   : 50,
+      itemsPerPage : 10
+    });
+
+    assert.equal(pagination.rangeEnd, 5);
+  });
+
+  it('range end page should be 5', function () {
+    var pagination = new Pagination({
       currentPage  : 3,
       totalItems   : 50,
       itemsPerPage : 10

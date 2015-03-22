@@ -102,6 +102,7 @@ Pagination.prototype.getRangeEnd = function () {
 
   rangeEnd = this.currentPage + this.offset;
   rangeEnd = rangeEnd > this.lastPage ? this.lastPage : rangeEnd;
+  rangeEnd = rangeEnd < this.rangeLength ? this.rangeLength : rangeEnd;
   diff     = this.totalPages - rangeEnd - this.offset;
 
   return diff > 0 ? rangeEnd + diff : rangeEnd;
