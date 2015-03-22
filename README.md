@@ -2,6 +2,7 @@
 > Generate a pagination object to be used on Node.js. It doesn't return any type
 of markup, just an object
 
+[![npm version](https://badge.fury.io/js/pagination-object.svg)](http://badge.fury.io/js/pagination-object)
 [![Codeship Status for renancouto/pagination-object](https://codeship.com/projects/927c9970-af96-0132-a853-0e5ba92aabbb/status?branch=master)](https://codeship.com/projects/69258)
 
 ## Install
@@ -35,8 +36,38 @@ var pagination = new Pagination({
 
   rangeStart   : 1,
   rangeEnd     : 5,
-  rangeLength  : 5
+  rangeLength  : 5,
+
+  range        : [
+    { page : 1 },
+    { page : 2 },
+    { page : 3, isCurrent : true },
+    { page : 4 },
+    { page : 5 }
+  ]
 }
+```
+
+## Example with jade
+```jade
+nav
+
+  li: a(href=pagination.firstPage) #{pagination.firstPage}
+
+  if pagination.previousPage
+    li: a(href=pagination.previousPage) #{pagination.previousPage}
+
+  each item in pagination.range
+    li
+      if item.isCurrent
+        span #{item.page}
+      else
+        a(href=item.page) #{item.page}
+
+  if pagination.nextPage
+    li: a(href=pagination.nextPage) #{pagination.nextPage}
+
+  li: a(href=pagination.lastPage) #{pagination.lastPage}
 ```
 
 ## Options

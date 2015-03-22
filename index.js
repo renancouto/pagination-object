@@ -25,6 +25,7 @@ function Pagination (options) {
   this.previousPage = this.getPrevious();
   this.rangeStart   = this.getRangeStart();
   this.rangeEnd     = this.getRangeEnd();
+  this.range        = this.getRange();
 }
 
 /**
@@ -106,6 +107,28 @@ Pagination.prototype.getRangeEnd = function () {
   diff     = this.totalPages - rangeEnd - this.offset;
 
   return diff > 0 ? rangeEnd + diff : rangeEnd;
+};
+
+/**
+ * get range array
+ * @return {array} [array of range items]
+ */
+Pagination.prototype.getRange = function () {
+  var range = [];
+  var i = this.rangeStart;
+  var t = this.rangeEnd;
+
+  for (i; i <= t; i++) {
+    var item = { page : i };
+
+    if (i === this.currentPage) {
+      item.isCurrent = true;
+    }
+
+    range.push(item);
+  }
+
+  return range;
 };
 
 /**

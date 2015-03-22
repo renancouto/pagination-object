@@ -191,4 +191,20 @@ describe('Pagination Object Tests', function () {
 
     assert.equal(pagination.rangeEnd, 6);
   });
+
+  it('range should be equal to this array', function () {
+    var pagination = new Pagination({
+      currentPage  : 1,
+      totalItems   : 51,
+      itemsPerPage : 10
+    });
+
+    assert.deepEqual(pagination.range, [
+      { page : 1, isCurrent : true },
+      { page : 2 },
+      { page : 3 },
+      { page : 4 },
+      { page : 5 }
+    ]);
+  });
 });
