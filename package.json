@@ -1,6 +1,6 @@
 {
   "name": "pagination-object",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Generate a pagination object to be used on Node.js",
   "main": "index.js",
   "scripts": {

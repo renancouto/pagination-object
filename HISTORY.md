@@ -1,6 +1,9 @@
 # pagination-object version history
 
 
+## 0.2.1
+- fixed `rangeEnd` calculation when is less than `rangeLength`
+
 ## 0.2.0
 - added range array for convenience when creating markups
 

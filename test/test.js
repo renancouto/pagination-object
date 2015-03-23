@@ -182,6 +182,27 @@ describe('Pagination Object Tests', function () {
     assert.equal(pagination.rangeEnd, 5);
   });
 
+  it('range end page should be 3', function () {
+    var pagination = new Pagination({
+      currentPage  : 1,
+      totalItems   : 30,
+      itemsPerPage : 10
+    });
+
+    assert.equal(pagination.rangeEnd, 3);
+  });
+
+  it('range end page should be 1', function () {
+    var pagination = new Pagination({
+      currentPage  : 1,
+      totalItems   : 9,
+      itemsPerPage : 10
+    });
+
+    assert.equal(pagination.rangeEnd, 1);
+  });
+
+
   it('range end page should be 6', function () {
     var pagination = new Pagination({
       currentPage  : 4,
