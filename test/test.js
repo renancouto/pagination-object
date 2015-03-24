@@ -135,11 +135,41 @@ describe('Pagination Object Tests', function () {
   it('range start page should be 2', function () {
     var pagination = new Pagination({
       currentPage  : 4,
-      totalItems   : 9,
+      totalItems   : 51,
       itemsPerPage : 10
     });
 
     assert.equal(pagination.rangeStart, 2);
+  });
+
+  it('range start page should be 2', function () {
+    var pagination = new Pagination({
+      currentPage  : 5,
+      totalItems   : 51,
+      itemsPerPage : 10
+    });
+
+    assert.equal(pagination.rangeStart, 2);
+  });
+
+  it('range start page should be 2', function () {
+    var pagination = new Pagination({
+      currentPage  : 6,
+      totalItems   : 51,
+      itemsPerPage : 10
+    });
+
+    assert.equal(pagination.rangeStart, 2);
+  });
+
+  it('range start page should be 6', function () {
+    var pagination = new Pagination({
+      currentPage  : 9,
+      totalItems   : 91,
+      itemsPerPage : 10
+    });
+
+    assert.equal(pagination.rangeStart, 6);
   });
 
   it('range end page should be 5', function () {
@@ -201,7 +231,6 @@ describe('Pagination Object Tests', function () {
 
     assert.equal(pagination.rangeEnd, 1);
   });
-
 
   it('range end page should be 6', function () {
     var pagination = new Pagination({

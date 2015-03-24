@@ -1,6 +1,9 @@
 # pagination-object version history
 
 
+## 0.2.3
+- fixed `rangeStart` calculation when is less than `rangeLength`
+
 ## 0.2.2
 - added code coverage reports
 

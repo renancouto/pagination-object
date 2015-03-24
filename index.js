@@ -85,13 +85,13 @@ Pagination.prototype.getPrevious = function () {
  * @return {number} [first item of the range]
  */
 Pagination.prototype.getRangeStart = function () {
-  var rangeStart, diff;
+  var rangeStart;
 
   rangeStart = this.currentPage - this.offset;
+  rangeStart = this.lastPage < rangeStart + this.rangeLength ? this.lastPage - this.rangeLength + 1 : rangeStart;
   rangeStart = rangeStart < this.firstPage ? this.firstPage : rangeStart;
-  diff       = rangeStart - this.firstPage - this.offset;
 
-  return diff > 0 ? rangeStart - diff : rangeStart;
+  return rangeStart;
 };
 
 /**
