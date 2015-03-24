@@ -6,4 +6,4 @@ node_js:
   - "0.10"
   - "iojs"
 after_script:
-  - npm run-script coveralls
+  - npm run coverage

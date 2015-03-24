@@ -1,12 +1,11 @@
 {
   "name": "pagination-object",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Generate a pagination object to be used on Node.js",
   "main": "index.js",
   "scripts": {
     "lint": "./node_modules/.bin/jshint *.js test/*.js",
-    "coverage": "istanbul cover _mocha test/test.js",
-    "coveralls": "${npm_package_scripts_coverage} && ${npm_package_bin}",
+    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "test": "npm run lint && mocha"
   },
   "precommit": [
@@ -26,10 +25,11 @@
   },
   "homepage": "https://github.com/renancouto/pagination-object",
   "devDependencies": {
+    "coveralls": "^2.11.2",
     "istanbul": "^0.3.10",
-    "istanbul-coveralls": "^1.0.2",
     "jshint": "^2.6.3",
     "mocha": "^2.2.1",
+    "mocha-lcov-reporter": "0.0.2",
     "pre-commit": "^1.0.6"
   }
 }
