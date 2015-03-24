@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "lint": "./node_modules/.bin/jshint *.js test/*.js",
+    "coverage": "istanbul cover _mocha test/test.js",
+    "coveralls": "${npm_package_scripts_coverage} && ${npm_package_bin}",
     "test": "npm run lint && mocha"
   },
   "precommit": [
@@ -24,6 +26,8 @@
   },
   "homepage": "https://github.com/renancouto/pagination-object",
   "devDependencies": {
+    "istanbul": "^0.3.10",
+    "istanbul-coveralls": "^1.0.2",
     "jshint": "^2.6.3",
     "mocha": "^2.2.1",
     "pre-commit": "^1.0.6"

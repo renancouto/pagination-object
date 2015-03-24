@@ -2,8 +2,10 @@
 > Generate a pagination object to be used on Node.js. It doesn't return any type
 of markup, just an object
 
-[![npm version](https://badge.fury.io/js/pagination-object.svg)](http://badge.fury.io/js/pagination-object)
-[![Codeship Status for renancouto/pagination-object](https://codeship.com/projects/927c9970-af96-0132-a853-0e5ba92aabbb/status?branch=master)](https://codeship.com/projects/69258)
+[![Travis](https://img.shields.io/travis/renancouto/pagination-object.svg?style=flat-square)](https://travis-ci.org/renancouto/pagination-object)
+[![Coveralls](https://img.shields.io/coveralls/renancouto/pagination-object.svg?style=flat-square)](https://coveralls.io/r/renancouto/pagination-object)
+[![npm](https://img.shields.io/npm/v/pagination-object.svg?style=flat-square)](https://www.npmjs.com/package/pagination-object)
+[![npm](https://img.shields.io/npm/dm/pagination-object.svg?style=flat-square)](https://www.npmjs.com/package/pagination-object)
 
 ## Install
 ```
