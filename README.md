@@ -52,22 +52,22 @@ var pagination = new Pagination({
 ```jade
 nav
 
-  li: a(href=pagination.firstPage) #{pagination.firstPage}
+  li: a(href='?page=#{pagination.firstPage}') #{pagination.firstPage}
 
   if pagination.previousPage
-    li: a(href=pagination.previousPage) #{pagination.previousPage}
+    li: a(href='?page=#{pagination.previousPage}') #{pagination.previousPage}
 
   each item in pagination.range
     li
       if item.isCurrent
         span #{item.page}
       else
-        a(href=item.page) #{item.page}
+        a(href='?page=#{item.page}') #{item.page}
 
   if pagination.nextPage
-    li: a(href=pagination.nextPage) #{pagination.nextPage}
+    li: a(href='?page=#{pagination.nextPage}') #{pagination.nextPage}
 
-  li: a(href=pagination.lastPage) #{pagination.lastPage}
+  li: a(href='?page=#{pagination.lastPage}') #{pagination.lastPage}
 ```
 
 ## Options

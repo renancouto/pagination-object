@@ -4,8 +4,12 @@
   "description": "Generate a pagination object to be used on Node.js",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "lint": "./node_modules/.bin/jshint *.js test/*.js",
+    "test": "npm run lint && mocha"
   },
+  "precommit": [
+    "test"
+  ],
   "repository": {
     "type": "git",
     "url": "git@github.com:renancouto/pagination-object.git"
@@ -20,6 +24,8 @@
   },
   "homepage": "https://github.com/renancouto/pagination-object",
   "devDependencies": {
-    "mocha": "^2.2.1"
+    "jshint": "^2.6.3",
+    "mocha": "^2.2.1",
+    "pre-commit": "^1.0.6"
   }
 }
