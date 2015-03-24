@@ -25,51 +25,50 @@ var pagination = new Pagination({
 ## Returns (not in this order)
 ```js
 {
-  firstPage    : 1,
-  previousPage : 2,
-  currentPage  : 3,
-  nextPage     : 4,
-  lastPage     : 6,
+  firstPage     : 1,
+  previousPage  : 2,
+  currentPage   : 3,
+  nextPage      : 4,
+  lastPage      : 6,
 
-  totalItems   : 54,
-  totalPages   : 6,
-  itemsPerPage : 10,
-  offset       : 2,
+  totalItems    : 54,
+  totalPages    : 6,
+  itemsPerPage  : 10,
+  offset        : 2,
 
-  rangeStart   : 1,
-  rangeEnd     : 5,
-  rangeLength  : 5,
+  rangeStart    : 1,
+  rangeEnd      : 5,
+  rangeLength   : 5,
 
-  range        : [
+  firstLabel    : '«',
+  lastLabel     : '‹',
+  previousLabel : '›',
+  nextLabel     : '»',
+
+  range         : [
+    { page : 1, isFirst : true, label : '«' },
+    { page : 2, isPrevious : true, label : '‹' },
+
     { page : 1 },
     { page : 2 },
     { page : 3, isCurrent : true },
     { page : 4 },
-    { page : 5 }
+    { page : 5 },
+
+    { page : 4, isNext : true, label : '›' },
+    { page : 6, isLast : true, label : '»' }
   ]
 }
 ```
 
-## Example with jade
+## Basic example with jade
 ```jade
 nav
-
-  li: a(href='?page=#{pagination.firstPage}') #{pagination.firstPage}
-
-  if pagination.previousPage
-    li: a(href='?page=#{pagination.previousPage}') #{pagination.previousPage}
-
   each item in pagination.range
-    li
-      if item.isCurrent
-        span #{item.page}
-      else
-        a(href='?page=#{item.page}') #{item.page}
-
-  if pagination.nextPage
-    li: a(href='?page=#{pagination.nextPage}') #{pagination.nextPage}
-
-  li: a(href='?page=#{pagination.lastPage}') #{pagination.lastPage}
+    if item.isCurrent
+      li: span(title='You are in page #{item.page}') #{item.page}
+    else
+      li: a(href='?page=#{item.page}', title='Go to page #{item.page}') #{item.label || item.page}
 ```
 
 ## Options
@@ -97,6 +96,26 @@ Default: `1`
 
 Type: `Number`
 Default: `5`
+
+### firstLabel
+
+Type: `String`
+Default: `«`
+
+### previousLabel
+
+Type: `String`
+Default: `‹`
+
+### nextLabel
+
+Type: `String`
+Default: `›`
+
+### lastLabel
+
+Type: `String`
+Default: `»`
 
 ## Tests
 ```

@@ -242,7 +242,7 @@ describe('Pagination Object Tests', function () {
     assert.equal(pagination.rangeEnd, 6);
   });
 
-  it('range should be equal to this array', function () {
+  it('range should be equal to array', function () {
     var pagination = new Pagination({
       currentPage  : 1,
       totalItems   : 51,
@@ -250,11 +250,70 @@ describe('Pagination Object Tests', function () {
     });
 
     assert.deepEqual(pagination.range, [
+      { page : 1, isFirst : true, label : '«' },
       { page : 1, isCurrent : true },
       { page : 2 },
       { page : 3 },
       { page : 4 },
-      { page : 5 }
+      { page : 5 },
+      { page : 2, isNext : true, label : '›' },
+      { page : 6, isLast : true, label : '»' }
     ]);
+  });
+
+  it('range should be equal to array', function () {
+    var pagination = new Pagination({
+      currentPage  : 3,
+      totalItems   : 51,
+      itemsPerPage : 10
+    });
+
+    assert.deepEqual(pagination.range, [
+      { page : 1, isFirst : true, label : '«' },
+      { page : 2, isPrevious : true, label : '‹' },
+      { page : 1 },
+      { page : 2 },
+      { page : 3, isCurrent : true },
+      { page : 4 },
+      { page : 5 },
+      { page : 4, isNext : true, label : '›' },
+      { page : 6, isLast : true, label : '»' }
+    ]);
+  });
+
+  it('range should be equal to array', function () {
+    var pagination = new Pagination({
+      currentPage  : 6,
+      totalItems   : 51,
+      itemsPerPage : 10
+    });
+
+    assert.deepEqual(pagination.range, [
+      { page : 1, isFirst : true, label : '«' },
+      { page : 5, isPrevious : true, label : '‹' },
+      { page : 2 },
+      { page : 3 },
+      { page : 4 },
+      { page : 5 },
+      { page : 6, isCurrent : true },
+      { page : 6, isLast : true, label : '»' }
+    ]);
+  });
+
+  it('labels should be changeable', function () {
+    var pagination = new Pagination({
+      currentPage   : 4,
+      totalItems    : 71,
+      itemsPerPage  : 10,
+      firstLabel    : 'First',
+      previousLabel : 'Prev',
+      nextLabel     : 'Next',
+      lastLabel     : 'Last'
+    });
+
+    assert.equal(pagination.firstLabel, 'First');
+    assert.equal(pagination.previousLabel, 'Prev');
+    assert.equal(pagination.nextLabel, 'Next');
+    assert.equal(pagination.lastLabel, 'Last');
   });
 });

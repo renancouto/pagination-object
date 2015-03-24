@@ -14,8 +14,12 @@ function Pagination (options) {
   this.itemsPerPage = options.itemsPerPage;
 
   // default properties
-  this.firstPage    = options.firstPage || 1;
-  this.rangeLength  = options.rangeLength || 5;
+  this.firstPage     = options.firstPage || 1;
+  this.rangeLength   = options.rangeLength || 5;
+  this.firstLabel    = options.firstLabel || '«';
+  this.previousLabel = options.previousLabel || '‹';
+  this.nextLabel     = options.nextLabel || '›';
+  this.lastLabel     = options.lastLabel || '»';
 
   // processed properties
   this.offset       = this.getOffset();
@@ -114,9 +118,13 @@ Pagination.prototype.getRangeEnd = function () {
  * @return {array} [array of range items]
  */
 Pagination.prototype.getRange = function () {
-  var range = [];
+  var range = [{ page : this.firstPage, isFirst : true, label : this.firstLabel }];
   var i = this.rangeStart;
   var t = this.rangeEnd;
+
+  if (this.previousPage) {
+    range.push({ page : this.previousPage, isPrevious : true, label : this.previousLabel });
+  }
 
   for (i; i <= t; i++) {
     var item = { page : i };
@@ -127,6 +135,12 @@ Pagination.prototype.getRange = function () {
 
     range.push(item);
   }
+
+  if (this.nextPage) {
+    range.push({ page : this.nextPage, isNext : true, label : this.nextLabel });
+  }
+
+  range.push({ page : this.lastPage, isLast : true, label : this.lastLabel });
 
   return range;
 };
