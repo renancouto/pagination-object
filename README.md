@@ -41,9 +41,9 @@ var pagination = new Pagination({
   rangeLength   : 5,
 
   firstLabel    : '«',
-  lastLabel     : '‹',
-  previousLabel : '›',
-  nextLabel     : '»',
+  previousLabel : '‹',
+  nextLabel     : '›',
+  lastLabel     : '»',
 
   range         : [
     { page : 1, isFirst : true, label : '«' },

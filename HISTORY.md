@@ -1,6 +1,9 @@
 # pagination-object version history
 
 
+## 1.0.1
+- fixed README.md output reference
+
 ## 1.0.0
 - added first, previous, next and last pages objects into `range` array
 
