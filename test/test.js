@@ -250,7 +250,6 @@ describe('Pagination Object Tests', function () {
     });
 
     assert.deepEqual(pagination.range, [
-      { page : 1, isFirst : true, label : '«' },
       { page : 1, isCurrent : true },
       { page : 2 },
       { page : 3 },
@@ -295,8 +294,7 @@ describe('Pagination Object Tests', function () {
       { page : 3 },
       { page : 4 },
       { page : 5 },
-      { page : 6, isCurrent : true },
-      { page : 6, isLast : true, label : '»' }
+      { page : 6, isCurrent : true }
     ]);
   });
 

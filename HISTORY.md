@@ -1,6 +1,9 @@
 # pagination-object version history
 
 
+## 1.1.0
+- removed `firstPage` and `lastPage` from `range` when the `currentPage` is equals to one of them
+
 ## 1.0.1
 - fixed README.md output reference
 

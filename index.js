@@ -118,9 +118,13 @@ Pagination.prototype.getRangeEnd = function () {
  * @return {array} [array of range items]
  */
 Pagination.prototype.getRange = function () {
-  var range = [{ page : this.firstPage, isFirst : true, label : this.firstLabel }];
+  var range = [];
   var i = this.rangeStart;
   var t = this.rangeEnd;
+
+  if (this.firstPage !== this.currentPage) {
+    range.push({ page : this.firstPage, isFirst : true, label : this.firstLabel });
+  }
 
   if (this.previousPage) {
     range.push({ page : this.previousPage, isPrevious : true, label : this.previousLabel });
@@ -140,7 +144,9 @@ Pagination.prototype.getRange = function () {
     range.push({ page : this.nextPage, isNext : true, label : this.nextLabel });
   }
 
-  range.push({ page : this.lastPage, isLast : true, label : this.lastLabel });
+  if (this.lastPage !== this.currentPage) {
+    range.push({ page : this.lastPage, isLast : true, label : this.lastLabel });
+  }
 
   return range;
 };
