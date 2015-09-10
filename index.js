@@ -1,6 +1,10 @@
 /*jshint node:true*/
 'use strict';
 
+function isUndefined (value) {
+  return value === void 0;
+}
+
 /**
  * Pagination Class
  * @param {object} options [options object]
@@ -14,7 +18,7 @@ function Pagination (options) {
   this.itemsPerPage = options.itemsPerPage;
 
   // default properties
-  this.firstPage     = options.firstPage || 1;
+  this.firstPage     = isUndefined(options.firstPage) ? 1 : options.firstPage;
   this.rangeLength   = options.rangeLength || 5;
   this.firstLabel    = options.firstLabel || '«';
   this.previousLabel = options.previousLabel || '‹';
@@ -24,7 +28,7 @@ function Pagination (options) {
   // processed properties
   this.offset       = this.getOffset();
   this.totalPages   = this.getTotal();
-  this.lastPage     = this.totalPages;
+  this.lastPage     = this.firstPage + this.totalPages - 1;
   this.nextPage     = this.getNext();
   this.previousPage = this.getPrevious();
   this.rangeStart   = this.getRangeStart();
@@ -41,7 +45,7 @@ Pagination.prototype.validateOptions = function (options) {
     throw new Error('No `options` were passed, aborting.');
   }
 
-  if (!options.currentPage || !options.totalItems || !options.itemsPerPage) {
+  if (isUndefined(options.currentPage) || !options.totalItems || !options.itemsPerPage) {
     throw new Error('You must define your options object correctly, aborting.');
   }
 
@@ -72,7 +76,7 @@ Pagination.prototype.getTotal = function () {
  */
 Pagination.prototype.getNext = function () {
   var next = this.currentPage + 1;
-  return next > this.totalPages ? null : next;
+  return next > this.lastPage ? null : next;
 };
 
 /**
@@ -81,7 +85,7 @@ Pagination.prototype.getNext = function () {
  */
 Pagination.prototype.getPrevious = function () {
   var previous = this.currentPage - 1;
-  return previous < 1 ? null : previous;
+  return previous < this.firstPage ? null : previous;
 };
 
 /**
@@ -126,7 +130,7 @@ Pagination.prototype.getRange = function () {
     range.push({ page : this.firstPage, isFirst : true, label : this.firstLabel });
   }
 
-  if (this.previousPage) {
+  if (this.previousPage !== null) {
     range.push({ page : this.previousPage, isPrevious : true, label : this.previousLabel });
   }
 

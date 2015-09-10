@@ -21,6 +21,33 @@ describe('Pagination Object Tests', function () {
     }); }, Error);
   });
 
+  it('should have expected defaults', function () {
+    var pagination = new Pagination({
+      currentPage  : 1,
+      totalItems   : 11,
+      itemsPerPage : 10
+    });
+
+    assert.equal(pagination.firstPage, 1);
+    assert.equal(pagination.rangeLength, 5);
+    assert.equal(pagination.firstLabel, '«');
+    assert.equal(pagination.previousLabel, '‹');
+    assert.equal(pagination.nextLabel, '›');
+    assert.equal(pagination.lastLabel, '»');
+  });
+
+  it('should support zero-based pagination', function () {
+    var pagination = new Pagination({
+      currentPage  : 0,
+      totalItems   : 31,
+      itemsPerPage : 10,
+      firstPage    : 0
+    });
+
+    assert.equal(pagination.currentPage, 0);
+    assert.equal(pagination.firstPage, 0);
+  });
+
   it('next page should be 3', function () {
     var pagination = new Pagination({
       currentPage  : 1,
@@ -41,6 +68,17 @@ describe('Pagination Object Tests', function () {
     assert.equal(pagination.nextPage, null);
   });
 
+  it('next page should be null (last page, firstPage 0)', function () {
+    var pagination = new Pagination({
+      currentPage  : 2,
+      totalItems   : 30,
+      itemsPerPage : 10,
+      firstPage    : 0
+    });
+
+    assert.equal(pagination.nextPage, null);
+  });
+
   it('previous page should be 1', function () {
     var pagination = new Pagination({
       currentPage  : 2,
@@ -49,6 +87,17 @@ describe('Pagination Object Tests', function () {
     });
 
     assert.equal(pagination.previousPage, 1);
+  });
+
+  it('previous page should be 0 (firstPage 0)', function () {
+    var pagination = new Pagination({
+      currentPage  : 1,
+      totalItems   : 30,
+      itemsPerPage : 10,
+      firstPage    : 0
+    });
+
+    assert.equal(pagination.previousPage, 0);
   });
 
   it('previous page should be null (first page)', function () {
@@ -79,6 +128,28 @@ describe('Pagination Object Tests', function () {
     });
 
     assert.equal(pagination.totalPages, 1);
+  });
+
+  it('last page should be 3 (firstPage 1)', function () {
+    var pagination = new Pagination({
+      currentPage  : 1,
+      totalItems   : 30,
+      itemsPerPage : 10,
+      firstPage    : 1
+    });
+
+    assert.equal(pagination.lastPage, 3);
+  });
+
+  it('last page should be 2 (firstPage 0)', function () {
+    var pagination = new Pagination({
+      currentPage  : 1,
+      totalItems   : 30,
+      itemsPerPage : 10,
+      firstPage    : 0
+    });
+
+    assert.equal(pagination.lastPage, 2);
   });
 
   it('offset should be 2', function () {
@@ -295,6 +366,25 @@ describe('Pagination Object Tests', function () {
       { page : 4 },
       { page : 5 },
       { page : 6, isCurrent : true }
+    ]);
+  });
+
+  it('range should be equal to array', function () {
+    var pagination = new Pagination({
+      currentPage  : 1,
+      totalItems   : 30,
+      itemsPerPage : 10,
+      firstPage    : 0
+    });
+
+    assert.deepEqual(pagination.range, [
+      { page : 0, isFirst : true, label : '«' },
+      { page : 0, isPrevious : true, label : '‹' },
+      { page : 0 },
+      { page : 1, isCurrent : true },
+      { page : 2 },
+      { page : 2, isNext : true, label : '›' },
+      { page : 2, isLast : true, label : '»' }
     ]);
   });
 
