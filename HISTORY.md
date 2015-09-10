@@ -1,6 +1,9 @@
 # pagination-object version history
 
 
+## 1.2.0
+- supports zero-based index pagination (Jim Fitzpatrick)
+
 ## 1.1.0
 - removed `firstPage` and `lastPage` from `range` when the `currentPage` is equals to one of them
 
