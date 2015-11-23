@@ -97,6 +97,11 @@ Default: `1`
 Type: `Number`
 Default: `5`
 
+### rangeLimit
+
+Type: `Boolean`
+Default: `false`
+
 ### firstLabel
 
 Type: `String`

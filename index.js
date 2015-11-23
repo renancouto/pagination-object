@@ -20,6 +20,7 @@ function Pagination (options) {
   // default properties
   this.firstPage     = isUndefined(options.firstPage) ? 1 : options.firstPage;
   this.rangeLength   = options.rangeLength || 5;
+  this.rangeLimit    = options.rangeLimit || false;
   this.firstLabel    = options.firstLabel || '«';
   this.previousLabel = options.previousLabel || '‹';
   this.nextLabel     = options.nextLabel || '›';
@@ -112,7 +113,10 @@ Pagination.prototype.getRangeEnd = function () {
   rangeEnd = this.currentPage + this.offset;
   rangeEnd = rangeEnd < this.rangeLength ? this.rangeLength : rangeEnd;
   rangeEnd = rangeEnd > this.lastPage ? this.lastPage : rangeEnd;
-  diff     = this.totalPages - rangeEnd - this.offset;
+
+  if (!this.rangeLimit) {
+    diff = this.totalPages - rangeEnd - this.offset;
+  }
 
   return diff > 0 ? rangeEnd : rangeEnd;
 };

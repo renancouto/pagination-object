@@ -408,6 +408,26 @@ describe('Pagination Object Tests', function () {
     ]);
   });
 
+  it('range should be limited when rangeLimit = true', function () {
+    var pagination = new Pagination({
+      currentPage  : 1,
+      totalItems   : 100,
+      itemsPerPage : 10,
+      rangeEnd     : 5,
+      rangeLimit   : true
+    });
+
+    assert.deepEqual(pagination.range, [
+      { page : 1, isCurrent : true },
+      { page : 2 },
+      { page : 3 },
+      { page : 4 },
+      { page : 5 },
+      { page : 2, isNext : true, label : '›' },
+      { page : 10, isLast : true, label : '»' }
+    ]);
+  });
+
   it('labels should be changeable', function () {
     var pagination = new Pagination({
       currentPage   : 4,
