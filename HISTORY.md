@@ -1,5 +1,7 @@
 # pagination-object version history
 
+## 1.2.1
+- fixed `rangeLength` calculation
 
 ## 1.2.0
 - supports zero-based index pagination (Jim Fitzpatrick)

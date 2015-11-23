@@ -114,7 +114,7 @@ Pagination.prototype.getRangeEnd = function () {
   rangeEnd = rangeEnd > this.lastPage ? this.lastPage : rangeEnd;
   diff     = this.totalPages - rangeEnd - this.offset;
 
-  return diff > 0 ? rangeEnd + diff : rangeEnd;
+  return diff > 0 ? rangeEnd : rangeEnd;
 };
 
 /**

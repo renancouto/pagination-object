@@ -333,6 +333,26 @@ describe('Pagination Object Tests', function () {
 
   it('range should be equal to array', function () {
     var pagination = new Pagination({
+      currentPage  : 1,
+      totalItems   : 100,
+      itemsPerPage : 10,
+      rangeLength  : 6
+    });
+
+    assert.deepEqual(pagination.range, [
+      { page : 1, isCurrent : true },
+      { page : 2 },
+      { page : 3 },
+      { page : 4 },
+      { page : 5 },
+      { page : 6 },
+      { page : 2, isNext : true, label : '›' },
+      { page : 10, isLast : true, label : '»' }
+    ]);
+  });
+
+  it('range should be equal to array', function () {
+    var pagination = new Pagination({
       currentPage  : 3,
       totalItems   : 51,
       itemsPerPage : 10
