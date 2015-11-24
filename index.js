@@ -107,14 +107,13 @@ Pagination.prototype.getRangeStart = function () {
  * @return {number} [first item of the range]
  */
 Pagination.prototype.getRangeEnd = function () {
-  var rangeEnd, diff;
+  var rangeEnd;
 
   rangeEnd = this.currentPage + this.offset;
   rangeEnd = rangeEnd < this.rangeLength ? this.rangeLength : rangeEnd;
   rangeEnd = rangeEnd > this.lastPage ? this.lastPage : rangeEnd;
-  diff     = this.totalPages - rangeEnd - this.offset;
 
-  return diff > 0 ? rangeEnd : rangeEnd;
+  return rangeEnd;
 };
 
 /**

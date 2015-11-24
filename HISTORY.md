@@ -1,5 +1,8 @@
 # pagination-object version history
 
+## 1.2.2
+- removed `diff` from `rangeLength` calculation
+
 ## 1.2.1
 - fixed `rangeLength` calculation
 
